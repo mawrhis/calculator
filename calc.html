@@ -1,0 +1,154 @@
+<html>
+	<head>
+		<script>
+			function button1() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "1" ;
+			}
+			function button2() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "2" ;
+			}
+			function button3() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "3" ;
+			}
+			function button4() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "4" ;
+			}
+			function button5() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "5" ;
+			}
+			function button6() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "6" ;
+			}
+			function button7() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "7" ;
+			}
+			function button8() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "8" ;
+			}
+			function button9() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "9" ;
+			}
+			function button0() {//if button is pressed add it's value to the field display
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + "0" ;
+			}
+			function erase() {//if button is pressed display is erased to O
+				document.getElementById('display').innerHTML = ""
+			}
+			var x = {}
+			var action = {}
+			var y = {}
+			function buttonPlus() {//adds + to display
+				x = document.getElementById('display').innerHTML;
+				action = "Add";
+				document.getElementById('display').innerHTML = "";
+			}
+			function buttonMinus() {//adds + to display
+				x = document.getElementById('display').innerHTML;
+				action = "Substract";
+				document.getElementById('display').innerHTML = "";
+			}
+
+			function buttonTimes() {//adds + to display
+				x = document.getElementById('display').innerHTML;
+				action = "Times";
+				document.getElementById('display').innerHTML = "";
+			}
+			function buttonDivide() {//adds + to display
+				x = document.getElementById('display').innerHTML;
+				action = "Divide";
+				document.getElementById('display').innerHTML = "";
+			}
+			function actionAdd(x,y){
+				return parseFloat(x) + parseFloat(y)
+			}
+			function actionSubstract(x,y){
+				return parseFloat(x) - parseFloat(y)
+			}
+			function actionDivide(x,y){
+				return parseFloat(x) / parseFloat(y)
+			}
+			function actionTimes(x,y){
+				return parseFloat(x) * parseFloat(y)
+			}
+			function buttonIs() {//adds + to display
+				y = document.getElementById('display').innerHTML;
+				if (action == "Add"){
+					document.getElementById('display').innerHTML = actionAdd(x,y);
+				}
+				if (action == "Substract"){
+					document.getElementById('display').innerHTML = actionSubstract(x,y);
+				}
+				if (action == "Divide"){
+					document.getElementById('display').innerHTML = actionDivide(x,y);
+				}
+				if (action == "Times"){
+					document.getElementById('display').innerHTML = actionTimes(x,y);
+				}
+
+			}
+			function writeVar() {//adds + to display
+				document.getElementById('display').innerHTML = x;
+			}				
+			
+		</script>
+		<style>
+		.machine{margin:auto; display: block; width: 300px; height: 250px; background-color: #484848; border-radius: 5px}
+		#display{margin-left:8px; margin-top: 15px; display: block; float:left; width:180px; height: 30px; background-color: #b6f4d3; border-radius: 5px; box-shadow: inset 0px 2px 0px gray }
+		.buttons{margin-left:25px; margin-top: 15px; display: block; float:left; width:250px; height: 170px;}
+		button{display: inline-block; float:left; width:50px; height: 30px; border-radius: 5px; margin-left:10px; margin-top:10px; background-color: #D6D6D6; border-color: none; box-shadow: 0px 4px 0px #ADADAD;border: 0px outset buttonface;}
+		button:active{display: inline-block; float:left; width:50px; height: 30px; border-radius: 5px; margin-left:10px; margin-top:10px; background-color: #D6D6D6; border-color: none; box-shadow: 0px 2px 0px #ADADAD;border: 0px outset buttonface; transform:translateY(2px);}
+
+		button:focus {
+			outline:none;}
+		/*div{border:1px solid black;}*/
+		#erase{width:50px; height:30px; background-color: #FF8585; margin-left: 25px;margin-top: 15px;}
+
+		</style>
+	<head>
+	<body>
+		<div class="machine">
+		<button id="erase" onclick="erase()">C</button>
+		<div id="display"></div>
+		<div class="buttons">
+		
+			<button id="1" onclick="button1()">1</button>
+			<button id="2" onclick="button2()">2</button>
+			<button onclick="button3()" id="3">3</button>
+			<button onclick="buttonIs()" id="is">=</button>
+			<button onclick="button4()" id="4">4</button>
+			<button onclick="button5()" id="5">5</button>
+			<button onclick="button6()" id="6">6</button>
+			<button onclick="buttonPlus()" id="plus">+</button>
+			<button onclick="button7()" id="7">7</button>
+			<button onclick="button8()" id="8">8</button>
+			<button onclick="button9()" id="9">9</button>
+			<button onclick="button0()" id="0">0</button>
+			<button id="minus" onclick="buttonMinus()">-</button>
+			<button id="times" onclick="buttonTimes()">*</button>
+			<button id="divide">/</button>
+			<button onclick="writeVar()" id="writeVar">var</button>
+		</div>
+	</body>
+</html>
+
+<!-- var x = cislo na displeji
+	 var y = nove cislo
+	 var z = vysledek ktery je pretransformovany na displej
+	 function add = scitaci funkce (x+y)
+	 function substract = odecitaci fce (x-y)
+	 function divide = delici fce
+	 function times = nasobici fce
+	 display = div ze ktereho se berou a do ktereho se vypisuji cisla
+	 kdyz zmacknu plus
+
+	 	vytvori se variable x z displeje
+	 	displejse smaze
+	 	ulozi se ze jsem zmackl plus (po stisknuti rovna se se pouzije fce pro soucet)
+	 	napisu dalsi cislo
+	 	zmacknu rovna se
+	 	z cisla se vytvori variable y
+	 	overi se zda jsem zmackl plus (pouzije se fce na sooucet)
+	 	pokud ano, secte se x a y
+	 	vypise se x a y na displej
+
+
