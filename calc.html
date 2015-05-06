@@ -5,8 +5,8 @@
     	font-family:"digital";
     	src: url("digital-7.ttf") /* TTF file for CSS3 browsers */
 		}
-		.machine{margin:auto; display: block; width: 300px; height: 250px; background-color: #484848; border-radius: 5px}
-		#display{padding-top:3px; padding-left:5px; margin-left:8px; margin-top: 15px; display: block; float:left; width:180px; height: 30px; background-color: #b6f4d3; border-radius: 5px; box-shadow: inset 0px 2px 0px gray; font-family:"digital"; font-size: 26px; color: #3B3B3B;}
+		.machine{margin-top:50px; margin-left:auto; margin-right:auto; display: block; width: 300px; height: 250px; background-color: #484848; border-radius: 10px; box-shadow: 0px 8px 0px #000;}
+		#display{text-align: right; padding-top:3px; padding-right:5px; margin-left:8px; margin-top: 15px; display: block; float:left; width:180px; height: 30px; background-color: #b6f4d3; border-radius: 5px; box-shadow: inset 0px 2px 0px gray; font-family:"digital"; font-size: 26px; color: #3B3B3B;}
 		.buttons{margin-left:25px; margin-top: 15px; display: block; float:left; width:250px; height: 170px;}
 		button{display: inline-block; float:left; width:50px; height: 30px; border-radius: 5px; margin-left:10px; margin-top:10px; background-color: #D6D6D6; border-color: none; box-shadow: 0px 4px 0px #ADADAD;border: 0px outset buttonface;}
 		button:active{display: inline-block; float:left; width:50px; height: 30px; border-radius: 5px; margin-left:10px; margin-top:10px; background-color: #D6D6D6; border-color: none; box-shadow: 0px 2px 0px #ADADAD;border: 0px outset buttonface; transform:translateY(2px);}
@@ -40,7 +40,7 @@
 			<button id="minus" onclick="buttonAction(this)">-</button>
 			<button id="times" onclick="buttonAction(this)">*</button>
 			<button id="divide" onclick="buttonAction(this)">/</button>
-			<button onclick="writeVar()" id="writeVar">var</button>
+			<button onclick="button(this)" id="point">.</button>
 		</div>
 	</body>
 </html>
