@@ -1,70 +1,72 @@
-			function button(ele){
-				var id = ele.id;
-				console.log ('area element id = ' + id);
-				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + document.getElementById( id ).innerHTML;
-			}
+			var action = {};
+			var display = {};
+			var chain = 0
+			var IsPressed = 0
 
 			function erase() {//if button is pressed display is erased
-				document.getElementById('display').innerHTML = ""
+				document.getElementById('display').innerHTML = "";
+				var action = 0;
+				chain = 0;
+				console.log ('action=' + action);
+				console.log ('chain=' + chain);
+
 			}
 
-			var x = {}
-			var action = {}
-			var y = {}
+			function button(ele){
+				var id = ele.id;
+				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + document.getElementById( id ).innerHTML;
+				display = document.getElementById('display').innerHTML;
+				console.log ('chain=' + chain);
+			}
+			
 
-			function buttonAction(ele) {
+
+			function buttonAction(ele) { //(ele)
 				var ActionId = ele.id;
-				console.log ('area element id = ' + ActionId);
-				if (ActionId == "minus") {
-				x = document.getElementById('display').innerHTML;
-				action = "Substract";
-				document.getElementById('display').innerHTML = "";
+				console.log ('ActionId=' + ActionId)
+				var sign = 0
+				if (ActionId == "plus"){
+					sign = " + "
 				}
-				if (ActionId == "plus") {
-				x = document.getElementById('display').innerHTML;
-				action = "Add";
-				document.getElementById('display').innerHTML = "";
+				if (ActionId == "minus"){
+					sign = " - "
 				}
-				if (ActionId == "times") {
-				x = document.getElementById('display').innerHTML;
-				action = "Times";
-				document.getElementById('display').innerHTML = "";
+				if (ActionId == "divide"){
+					sign = " / "
 				}
-				if (ActionId == "divide") {
-				x = document.getElementById('display').innerHTML;
-				action = "Divide";
-				document.getElementById('display').innerHTML = "";
+				if (ActionId == "times"){
+					sign = " * "
 				}
+				console.log ('chain=' + chain);
+				if (IsPressed == 1){
+					display=chain;
+				}
+				if (chain == 0){
+					chain = document.getElementById('display').innerHTML + sign;
+				}else{
+					chain = chain + document.getElementById('display').innerHTML + sign;
+				}
+				document.getElementById('display').innerHTML = "";
+				console.log ('chain=' + chain);
+				//document.getElementById('display').innerHTML = eval(chain);
 			}
-
-			function actionAdd(x,y){
-				return parseFloat(x) + parseFloat(y)
-			}
-			function actionSubstract(x,y){
-				return parseFloat(x) - parseFloat(y)
-			}
-			function actionDivide(x,y){
-				return parseFloat(x) / parseFloat(y)
-			}
-			function actionTimes(x,y){
-				return parseFloat(x) * parseFloat(y)
-			}
+			
+			/*function actionAdd(number1,number2){
+				return parseFloat(number1) + parseFloat(number2)
+			}*/
+			
 			function buttonIs() {//adds + to display
-				y = document.getElementById('display').innerHTML;
-				if (action == "Add"){
-					document.getElementById('display').innerHTML = actionAdd(x,y);
-				}
-				if (action == "Substract"){
-					document.getElementById('display').innerHTML = actionSubstract(x,y);
-				}
-				if (action == "Divide"){
-					document.getElementById('display').innerHTML = actionDivide(x,y);
-				}
-				if (action == "Times"){
-					document.getElementById('display').innerHTML = actionTimes(x,y);
-				}
+				IsPressed = 1
+				display = document.getElementById('display').innerHTML;
+				chain = chain + display;
+				console.log (chain);
+				document.getElementById('display').innerHTML = Math.ceil(eval(chain) * 1000000000) / 1000000000;
+				chain = 0;
+				console.log (chain);
+				
+				//document.getElementById('display').innerHTML = Math.ceil(z * 1000000000) / 1000000000;
 
 			}
-			function writeVar() {//adds + to display
-				document.getElementById('display').innerHTML = x;
+			function point() {//adds + to display
+				document.getElementById('display').innerHTML = number1;
 			}				
