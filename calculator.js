@@ -1,30 +1,35 @@
-			var action = {};
-			var display = {};
-			var chain = 0
-			var IsPressed = 0
+			
+			var action = 0 // type of action (+-/*)
+				chain = 0//chain of numbers currently hidden in memory, should be replaced by one number (chain already calculated)
+				IsPressed = 0
+				sign = 0
 
 			function erase() {//if button is pressed display is erased
-				document.getElementById('display').innerHTML = "";
+				document.getElementById('display').innerHTML = 0;
 				var action = 0;
 				chain = 0;
 				console.log ('action=' + action);
-				console.log ('chain=' + chain);
-
+			    console.log ('chain=' + chain);
 			}
 
 			function button(ele){
 				var id = ele.id;
+				if (document.getElementById('display').innerHTML == 0){
+					document.getElementById('display').innerHTML = "";
+				}
+				if (sign != 0){
+					document.getElementById('display').innerHTML = "";
+				}
 				document.getElementById('display').innerHTML = document.getElementById('display').innerHTML + document.getElementById( id ).innerHTML;
-				display = document.getElementById('display').innerHTML;
-				console.log ('chain=' + chain);
+				sign = 0;
 			}
 			
 
 
-			function buttonAction(ele) { //(ele)
+			function buttonAction(ele) { //
 				var ActionId = ele.id;
-				console.log ('ActionId=' + ActionId)
-				var sign = 0
+					
+
 				if (ActionId == "plus"){
 					sign = " + "
 				}
@@ -37,36 +42,33 @@
 				if (ActionId == "times"){
 					sign = " * "
 				}
-				console.log ('chain=' + chain);
-				if (IsPressed == 1){
-					display=chain;
-				}
+
+				console.log ('chain1=' + chain);
 				if (chain == 0){
 					chain = document.getElementById('display').innerHTML + sign;
 				}else{
-					chain = chain + document.getElementById('display').innerHTML + sign;
+					chain = chain + document.getElementById('display').innerHTML;
+					document.getElementById('display').innerHTML = Math.ceil(eval(chain) * 1000000000) / 1000000000;
+					chain = document.getElementById('display').innerHTML;
+					chain = chain + sign;
 				}
-				document.getElementById('display').innerHTML = "";
-				console.log ('chain=' + chain);
-				//document.getElementById('display').innerHTML = eval(chain);
+				
+				console.log ('chain2=' + chain);
 			}
 			
-			/*function actionAdd(number1,number2){
-				return parseFloat(number1) + parseFloat(number2)
-			}*/
 			
 			function buttonIs() {//adds + to display
-				IsPressed = 1
-				display = document.getElementById('display').innerHTML;
-				chain = chain + display;
-				console.log (chain);
+				chain = chain + document.getElementById('display').innerHTML;
 				document.getElementById('display').innerHTML = Math.ceil(eval(chain) * 1000000000) / 1000000000;
-				chain = 0;
-				console.log (chain);
-				
-				//document.getElementById('display').innerHTML = Math.ceil(z * 1000000000) / 1000000000;
-
+				chain = document.getElementById('display').innerHTML;
+				chain = 0;				
 			}
-			function point() {//adds + to display
-				document.getElementById('display').innerHTML = number1;
-			}				
+// omezeni poctu znaku na displeji
+/*
+			var i;
+			var divs = document.getElementsByTagName('div');
+			for(i=0;i<divs.length;i++) {
+  				if(divs[i].className == 'myclass') {
+   					 divs[i].innerHTML = divs[i].innerHTML.substring(0,200);
+  				}
+			}*/
